@@ -70,10 +70,10 @@ def get_delta_from_cache() -> Optional[int]:
     today = date.today().isoformat()
     conn = valkey_connection()
     cache_response = conn.get(today)
-    assert isinstance(cache_response, Optional[str])
     if cache_response is None:
         return None
     else:
+        assert isinstance(cache_response, str)
         return int(cache_response)
 
 
