@@ -51,7 +51,7 @@ def display_delta(request: Request):
 
 
 def valkey_connection() -> valkey.Valkey:
-    return valkey.Valkey(host="localhost", port=6379, db=0, decode_responses=True)
+    return valkey.Valkey(host="valkey", port=6379, db=0, decode_responses=True)
 
 
 def set_cache(delta: int) -> None:
