@@ -1,4 +1,10 @@
 <html>
-	<h1>{{ delta }}</h1>
-	<p>{% if cache_hit %} cache hit {% else %} cache not hit {% endif %}</p>
+	<head>
+		<link rel="stylesheet" href="static/style.css">
+	</head>
+	<body>
+		<h1 class="delta">{{ delta }}</h1>
+		<p>{% if cache_hit %} This was served from cache. {% else %} This was not served from cache. {% endif %}</p>
+		<p>Data provided by the <a href="https://open-meteo.com/" target="_blank">Open Meteo API</a></p>
+	</body>
 </html>

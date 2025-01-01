@@ -6,6 +6,7 @@ WORKDIR /daylight
 
 COPY poetry.lock pyproject.toml ./
 COPY daylightsticot ./daylightsticot/
+COPY static ./static/
 
 RUN poetry install
 
