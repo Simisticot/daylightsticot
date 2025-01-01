@@ -1,8 +1,5 @@
-import json
-import logging
 import math
 from datetime import date, datetime
-from functools import cache
 from typing import Optional, Tuple
 
 import requests
@@ -11,7 +8,6 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
-from valkey.client import Valkey
 
 app = FastAPI()
 templates = Jinja2Templates(directory="daylightsticot/templates")
