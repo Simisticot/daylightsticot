@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "daylightsticot"
+version = "0.1.0"
+description = ""
+authors = ["Simisticot <simi.pra@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+fastapi = { version = "0.115.6", extras = ["standard"] }
+pydantic = "2.10.4"
+requests = "2.32.3"
+valkey = { version = "6.0.2", extras = ["libvalkey"] }
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
