@@ -4,7 +4,23 @@
 	</head>
 	<body>
 		<h1 class="delta">{{ delta }}</h1>
-		<p>{% if cache_hit %} This was served from cache. {% else %} This was not served from cache. {% endif %}</p>
+		<div>
+			<button id="more">More</button>
+			<button id="less" class="hidden">Less</button>
+		</div>
+		<div id="additional-info" class="hidden">
+			<p>Total daylight: {{ daylight_duration }}s</p>
+			<p>Sunrise: {{ sunrise }}</p>
+			<p>Sunset: {{ sunset }}<p/>
+			<p>Today we will get {{ percent_of_next_solstice }}% as much daylight as on the summer solstice.</p>
+			<div class="progress-container">
+				<div class="progress">
+					<div class="progress-filled" style="width: {{ percent_of_next_solstice * 5}}px;">
+					</div>
+				</div>
+			</div>
+		</div>
 		<p>Data provided by the <a href="https://open-meteo.com/" target="_blank">Open Meteo API</a></p>
 	</body>
+	<script src="static/script.js"></script> 
 </html>

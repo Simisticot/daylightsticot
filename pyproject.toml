@@ -11,8 +11,10 @@ fastapi = { version = "0.115.6", extras = ["standard"] }
 pydantic = "2.10.4"
 requests = "2.32.3"
 valkey = { version = "6.0.2", extras = ["libvalkey"] }
-
+pytest = "^8.3.4"
+mypy = "1.14.1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+

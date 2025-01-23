@@ -3,8 +3,22 @@ html {
 	color: white;
 }
 
-.delta{
+.delta {
 	font-size: 20vw;
 	margin: 0;
 }
 
+.progress {
+	height: 20px;
+	width: 500px;
+	background-color: grey;
+}
+
+.progress-filled {
+	height: 20px;
+	background-color: white;
+}
+
+.hidden {
+	display: none;
+}
