@@ -1,3 +1,5 @@
+import time
+
 import valkey
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
@@ -14,11 +16,12 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="daylightsticot/templates")
 service = ReportService(
-        client=ValkeyCachedDaylightClient(
-            client=OpenMeteoDaylightClient(),
-            cache=valkey.Valkey(host="valkey", port=6379, db=0, decode_responses=True),
-        )
+    client=ValkeyCachedDaylightClient(
+        client=OpenMeteoDaylightClient(),
+        cache=valkey.Valkey(host="valkey", port=6379, db=0, decode_responses=True),
     )
+)
+
 
 @app.get("/", response_class=HTMLResponse)
 def display_delta(request: Request):
@@ -27,6 +30,9 @@ def display_delta(request: Request):
     formatted_delta = (
         f"{"+" if report.daylight_delta > 0 else ""}{report.daylight_delta}s"
     )
+    formatted_daylight_duration = time.strftime(
+        "%H:%M:%S", time.gmtime(report.daylight_duration)
+    )
     return templates.TemplateResponse(
         request=request,
         name="delta.html",
@@ -34,7 +40,7 @@ def display_delta(request: Request):
             "delta": formatted_delta,
             "sunrise": report.sunrise_time.time(),
             "sunset": report.sunset_time.time(),
-            "daylight_duration": report.daylight_duration,
+            "daylight_duration": formatted_daylight_duration,
             "percent_of_next_solstice": round(report.percent_of_next_solstice, 2),
             "progress_bar_width": report.percent_of_next_solstice * 5,
         },
