@@ -3,6 +3,11 @@ services:
     build: .
     ports:
       - "8701:8000"
+    develop:
+      watch:
+        - action: sync
+          path: ./daylightsticot/templates/
+          target: /daylight/daylightsticot/templates/
   valkey:
     image: valkey/valkey:8.0.1
     command: valkey-server /usr/local/etc/valkey/valkey.conf
