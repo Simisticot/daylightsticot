@@ -1,6 +1,18 @@
 <html>
 	<head>
+		<title>Daylightsticot</title>
 		<link rel="stylesheet" href="static/style.css">
+		{% if percent_of_next_solstice > 80 %}
+		<link rel="icon" href="static/1.png">
+		{% elif percent_of_next_solstice > 60 %}
+		<link rel="icon" href="static/2.png">
+		{% elif percent_of_next_solstice > 40 %}
+		<link rel="icon" href="static/3.png">
+		{% elif percent_of_next_solstice > 20 %}
+		<link rel="icon" href="static/4.png">
+		{% else %}
+		<link rel="icon" href="static/5.png">
+		{% endif %}
 	</head>
 	<body>
 		<h1 class="delta">{{ delta }}</h1>
