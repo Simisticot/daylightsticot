@@ -2,7 +2,7 @@ services:
   daylightsticot:
     build: .
     ports:
-      - "8701:8000"
+      - "127.0.0.1:8701:8000"
     develop:
       watch:
         - action: sync
